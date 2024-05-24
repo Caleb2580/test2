@@ -199,12 +199,34 @@ div.quote h1 {
     margin: 0 0 1rem 0;
 }
 
+.time_div {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
 .time_div select {
     font-family: 'Montserrat', sans-serif;
     width: 150px;
     height: 40px;
     padding: 0 .3em;
-    margin: 1rem 1em 0 1em;
+    margin: 1rem 1em 1rem 1em;
+    background-color: rgb(250, 250, 250);
+}
+
+.go-btn {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2em;
+    margin: 1rem 0 0 0;
+    background-color: transparent;
+    color: rgb(250, 250, 250);
+    border: 3px solid rgb(250, 250, 250);
+    padding: .2em 1em;
+    cursor: pointer;
+}
+
+.go-btn:hover {
+    background-color: rgba(255, 255, 255, .1);
 }
 
 

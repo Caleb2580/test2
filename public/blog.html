@@ -10,54 +10,68 @@
 </head>
 <body>
     <div class="nav">
-        <div class="logo">
-            <img src="static/images/logo.png" alt="">
+        <div class="nav_main">
+            <div class="line"></div>
+            <h1 class="nav-title" onclick="window.location = '/'">Sailing Heartstring</h1>
+            <div class="line"></div>
         </div>
-        <h1 class="nav-title" onclick="window.location = '/'">Sailing Heartstring</h1>
-        <ul class="menu-items">
-            <li><a href="blog">Blog</a></li>
-            <li><a href="about">About Us</a></li>
-            <li><a href="contact">Contact Us</a></li>
-        </ul>
-    </div>
-    <div class="nav-spacer"></div>
-    <div class="main">
-        <div class="archive">
-            <div class="yearscontainer">
-                <button onclick="adjustYears(-1)"><</button>
-                <div class="yearsC">
-                    <div class="years"></div>
-                </div>
-                <button onclick="adjustYears(1)">></button>
+        <div class="menu_items">
+            <div class="left menu">
+                <a href="/home">HOME</a>
+                <a href="/blog">BLOG</a>
+                <a href="/galler">GALLERY</a>
             </div>
-            <div class="months"></div>
-        </div>
-
-    </div>
-
-    <div class="footer">
-        <div class="inner-footer">
-            <h3>&copy Sailing Heartstring 2024</h3>
-            <button class="bTT" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">Back To Top</button>
+            <div class="right menu">
+                <a href="/our-story">OUR STORY</a>
+                <a href="/contact-us">CONTACT US</a>
+            </div>
         </div>
     </div>
 
-    <script>
-        function adjustYears(amt) {
-            let e = document.querySelector('.years');
-            let maLeft = window.getComputedStyle(e).marginLeft;
-            maLeft = parseFloat(maLeft.substring(0, maLeft.length-2));
-            if (maLeft % 150 != 0) {
-                if (amt > 0) {
-                    maLeft -= Math.abs(maLeft % 150);
-                } else {
-                    maLeft += Math.abs(maLeft % 150);
-                }
-            }
-            console.log(maLeft);
-            e.style.marginLeft = (maLeft - 150 * amt).toString() + 'px';
-        }
-    </script>
+    <div class="main">
+        <div class="time_container">
+            <div class="time_div">
+                <select name="" id="month">
+                    <option value="All">All</option>
+                    <option value="January">January</option>
+                    <option value="February">February</option>
+                    <option value="March">March</option>
+                    <option value="April">April</option>
+                    <option value="May">May</option>
+                    <option value="June">June</option>
+                    <option value="July">July</option>
+                    <option value="August">August</option>
+                    <option value="September">September</option>
+                    <option value="October">October</option>
+                    <option value="November">November</option>
+                    <option value="December">December</option>
+                </select>
+                <select name="" id="year">
+                    <option value="2024">2024</option>
+                    <option value="2023">2023</option>
+                    <option value="2022">2022</option>
+                    <option value="2021">2021</option>
+                    <option value="2020">2020</option>
+                    <option value="2019">2019</option>
+                </select>
+                <button class="go-btn" onclick="goTime()">Go!</button>
+            </div>
+        </div>
+        <!-- <div class="featured-blogs">
+            <div class="fp-holder">
+                <div class="fp">
+                    <img src="/blog_posts/Sailing to Maryland/1.jpg" alt="">
+                    <div class="blog_title"><h1>Sailing to Maryland</h1><h3>May 5th, 2024</h3></div>
+                </div>
+            </div>
+            <div class="fp-holder">
+                <div class="fp">
+                    <img src="/blog_posts/Ashore Repairs/1.jpg" alt="">
+                    <div class="blog_title"><h1>Ashore Repairs</h1><h3>April 28th, 2024</h3></div>
+                </div>
+            </div>
+        </div> -->
+    </div>
 
     <script src="static/scripts/nav.js"></script>
     <script src="static/scripts/blog.js"></script>

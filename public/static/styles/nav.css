@@ -10,11 +10,11 @@
     font-weight: 700;
     top: 0;
     left: 0;
-    margin-left: -49%;
-    width: 200%;
+    width: 100%;
     height: 160px;
     z-index: 5;
     overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 .nav_main {
@@ -26,6 +26,7 @@
     align-items: center;
     font-size: 1.3em;
     overflow-x: hidden;
+    overflow-y: hidden;
     margin-top: 1.5em;
     margin-bottom: 1.5em;
 }
@@ -33,18 +34,33 @@
 .nav-title {
     /* font-family: 'Marck Script', cursive;
     font-size: 3em; */
+    text-align: center;
     font-family: "Allura", cursive;
     font-size: 4.3em;
     font-weight: 400;
     color: rgb(250, 250, 250);
     cursor: pointer;
+    position: relative;
 }
 
-.line {
-    background-color: rgb(250, 250, 250);
-    width: 25%;
+.nav-title::before,
+.nav-title::after {
+    content: "";
+    position: absolute;
+    top: .5em;
+    width: 100%;
     height: 3px;
-    margin: 0 2em;
+    background-color: white;
+}
+
+.nav-title::before {
+    right: 100%;
+    margin-right: 20px;
+}
+
+.nav-title::after {
+    left: 100%;
+    margin-left: 20px;
 }
 
 .menu_items {
