@@ -57,7 +57,8 @@
             <div class="time_container">
                 <h1>Time Travel?</h1>
                 <div class="time_div">
-                    <select name="" id="">
+                    <select name="" id="month">
+                        <option value="All">All</option>
                         <option value="January">January</option>
                         <option value="February">February</option>
                         <option value="March">March</option>
@@ -71,7 +72,7 @@
                         <option value="November">November</option>
                         <option value="December">December</option>
                     </select>
-                    <select name="" id="">
+                    <select name="" id="year">
                         <option value="2024">2024</option>
                         <option value="2023">2023</option>
                         <option value="2022">2022</option>
@@ -80,7 +81,7 @@
                         <option value="2019">2019</option>
                     </select>
                 </div>
-                <button class="go-btn">Go!</button>
+                <button class="go-btn" onclick="goTime()">Go!</button>
             </div>
         </div>
     </div>

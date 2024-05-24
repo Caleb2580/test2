@@ -56,3 +56,22 @@ window.addEventListener('touchend', function(event) {
     console.log('hello');
     scrolling = false;
 })
+
+
+
+function goTime() {
+    let month = document.querySelector('select#month');
+    let year = document.querySelector('select#year');
+
+    let monthSelected = month.options[month.selectedIndex].value;
+    let yearSelected = year.options[year.selectedIndex].value;
+
+    if (monthSelected == 'All') {
+        location.href = '/blog?year=' + yearSelected;
+    } else {
+        location.href = '/blog?year=' + yearSelected + '&month=' + months_n[months.indexOf(monthSelected)];
+    }
+}
+
+
+
