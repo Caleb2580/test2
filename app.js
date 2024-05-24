@@ -17,9 +17,9 @@ app.get('/home', (req, res) => {
     res.redirect('/');
 });
 
-app.get('/blog', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'blog.html'))
-});
+// app.get('/blog', (req, res) => {
+//     res.sendFile(path.join(__dirname, 'public', 'blog.html'))
+// });
 
 
 app.listen(port, '0.0.0.0', () => {
