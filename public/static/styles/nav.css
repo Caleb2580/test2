@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@500;900&family=Poetsen+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@500;900&family=Oswald:wght@200..700&family=Poetsen+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Marck+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Allura&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+.nav {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-left: -50%;
+    width: 200%;
+    height: 120px;
+    z-index: 5;
+    overflow-x: hidden;
+}
+
+.nav_padder {
+    width: 100%;
+    height: calc(120px + 3em);
+}
+
+.nav_main {
+    width: 100%;
+    height: 120px;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3em;
+    overflow-x: hidden;
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+    overflow: hidden;
+}
+
+.nav-title {
+    /* font-family: 'Marck Script', cursive;
+    font-size: 3em; */
+    font-family: "Allura", cursive;
+    font-size: 4em;
+    font-weight: 400;
+    color: rgb(250, 250, 250);
+    cursor: pointer;
+}
+
+.line {
+    background-color: rgb(250, 250, 250);
+    width: 35%;
+    height: 3px;
+    margin: 0 2em;
+}
+
+.menu_items {
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-top: .6em;
+    margin-left: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    width: 30%;
+    justify-content: space-around;
+}
+
+.menu a {
+    color: rgb(250, 250, 250);
+    text-decoration: none;
+}
+
+
+
+@media screen and (max-width: 1450px) {
+    .menu {
+        width: 25%;
+    }
+}
+
+@media screen and (max-width: 1220px) {
+    .menu {
+        width: 28%;
+    }
+
+    .nav-title {
+        font-size: 3em;
+    }
+}
+
+@media screen and (max-width: 1070px) {
+    .menu_items {
+        display: none;
+    }
+
+    .line {
+        width: 25%;
+        margin: 0 1em;
+    }
+}
+
+@media screen and (max-width: 585px) {
+    .nav-title {
+        font-size: 2em;
+    }
+}
+
+@media screen and (max-width: 370px) {
+    .nav-title {
+        font-size: 1.7em;
+    }
+    .line {
+        width: 20%;
+    }
+}
+
+
+
+

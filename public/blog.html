@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/styles/nav.css">
+    <link rel="stylesheet" href="static/styles/blog.css">
+    <script src="static/scripts/main.js"></script>
+    <title>Sailing Heartstring</title>
+</head>
+<body>
+    <div class="nav">
+        <div class="logo">
+            <img src="static/images/logo.png" alt="">
+        </div>
+        <h1 class="nav-title" onclick="window.location = '/'">Sailing Heartstring</h1>
+        <ul class="menu-items">
+            <li><a href="blog">Blog</a></li>
+            <li><a href="about">About Us</a></li>
+            <li><a href="contact">Contact Us</a></li>
+        </ul>
+    </div>
+    <div class="nav-spacer"></div>
+    <div class="main">
+        <div class="archive">
+            <div class="yearscontainer">
+                <button onclick="adjustYears(-1)"><</button>
+                <div class="yearsC">
+                    <div class="years"></div>
+                </div>
+                <button onclick="adjustYears(1)">></button>
+            </div>
+            <div class="months"></div>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <div class="inner-footer">
+            <h3>&copy Sailing Heartstring 2024</h3>
+            <button class="bTT" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">Back To Top</button>
+        </div>
+    </div>
+
+    <script>
+        function adjustYears(amt) {
+            let e = document.querySelector('.years');
+            let maLeft = window.getComputedStyle(e).marginLeft;
+            maLeft = parseFloat(maLeft.substring(0, maLeft.length-2));
+            if (maLeft % 150 != 0) {
+                if (amt > 0) {
+                    maLeft -= Math.abs(maLeft % 150);
+                } else {
+                    maLeft += Math.abs(maLeft % 150);
+                }
+            }
+            console.log(maLeft);
+            e.style.marginLeft = (maLeft - 150 * amt).toString() + 'px';
+        }
+    </script>
+
+    <script src="static/scripts/nav.js"></script>
+    <script src="static/scripts/blog.js"></script>
+    
+</body>
+</html>
