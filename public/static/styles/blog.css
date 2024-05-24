@@ -180,15 +180,18 @@ body {
 .blog_container h1 {
     font-weight: 400;
     font-size: 3em;
+    text-align: center;
 }
 
 .blog_container h2 {
     font-weight: 400;
     font-size: 1.8em;
+    text-align: center;
 }
 
 .blog_container p {
     font-size: 1.5em;
+    text-align: center;
 }
 
 
