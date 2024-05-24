@@ -62,9 +62,8 @@ app.get('/admin', (req, res) => {
 
 app.post('/admin', (req, res) => {
     let body = req.body;
-    console.log(process.env.ADMIN_USERNAME, process.env.ADMIN_PASSWORD);
     console.log(body);
-    if (body.username == process.env.UNAME && body.password == process.env.PWD) {
+    if (body.username == process.env.ADMIN_USERNAME && body.password == process.env.ADMIN_PASSWORD) {
         req.session.authenticated = true;
         res.send({success: true});
         return;
