@@ -257,5 +257,19 @@ body {
         margin-right: 1em;
         margin-left: 0;
     }
+
+    .time_container {
+        padding: 2em 1em;
+    }
+
+    .time_div select {
+        width: 90px;
+        font-size: .8em;
+        margin: 0 .5em 0 .5em;
+    }
+
+    .go-btn {
+        margin: 0 .5rem 0 .5rem;
+    }
 }
 
