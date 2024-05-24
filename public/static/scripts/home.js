@@ -1,105 +1,58 @@
 
-function getSelectedYear() {
-    let e = document.querySelector('.years');
-    if (e != null) {
-        return e.querySelector('.arc.selected');
-    }
-    return null;
-}
+let scrolling = false;
 
-function selectYear(e) {
-    let y = getSelectedYear();
-    if (y != null) {
-        y.classList.remove('selected');
-    }
-    e.classList.add('selected');
-}
+let min_scroll = 0;
+let max_scroll = 2;
 
+let start = 0
 
-blog_posts = [
-    {
-        title: 'Sailing to Maryland',
-        blog: 'Test Test Test',
-        image_path: 'static/blog_posts/1.jpg'
-    }
-]
+let amount = 0;
 
-// years = [
-//     '2024',
-//     '2023',
-//     '2022',
-//     '2021'
-// ]
-
-years = []
-for (let i = 2030; i > 2022; i--) {
-    years.push(i.toString());
-}
-
-console.log(years);
-
-months = [
-    'Jan',
-    'Feb',
-    'Mar',
-    'Apr',
-    'May',
-    'Jun',
-    'Jul',
-    'Aug',
-    'Sep',
-    'Oct',
-    'Nov',
-    'Dec',
-]
-
-
-archive_HTML = document.querySelector('.archive');
-years_HTML = archive_HTML.querySelector('.years');
-months_HTML = archive_HTML.querySelector('.months');
-
-for (let i = 0; i < years.length; i++) {
-    let yearDiv = document.createElement('div');
-    yearDiv.innerHTML = years[i];
-    yearDiv.classList.add('arc');
-    if (i == 0) {
-        yearDiv.classList.add('selected');
-    }
-    yearDiv.addEventListener('click', function(event) {
-        selectYear(event.currentTarget);
-    });
-    years_HTML.appendChild(yearDiv);
-    if (i != years.length-1) {
-        let connecter = document.createElement('div');
-        connecter.classList.add('connecter');
-        years_HTML.appendChild(connecter);
+function handleScrollWheel(event) {
+    console.log(event);
+    if (!scrolling) {
+        scrolling = true;
+        amount += event.deltaY > 0 ? 1 : -1;
+        if (amount < min_scroll) {
+            amount = min_scroll;
+        } else if (amount > max_scroll) {
+            amount = max_scroll;
+        }
+        scrollTo({
+            top: window.innerHeight * amount,
+            left: 0,
+            behavior: 'smooth'
+        })
+        setTimeout(() => {
+            scrolling = false;
+        }, 250);
     }
 }
 
-for (let i = 0; i < months.length; i++) {
-    let monthDiv = document.createElement('div');
-    monthDiv.innerHTML = months[i];
-    monthDiv.classList.add('montharc');
-    months_HTML.appendChild(monthDiv);
-    // if (i != months.length-1) {
-    //     let connecter = document.createElement('div');
-    //     connecter.classList.add('monthconnecter');
-    //     months_HTML.appendChild(connecter);
-    // }
+function handleScrollMobile(event) {
+    if (!scrolling) {
+        scrolling = true;
+        amount += event.touches[0].clientY < start ? 1 : -1;
+        if (amount < min_scroll) {
+            amount = min_scroll;
+        } else if (amount > max_scroll) {
+            amount = max_scroll;
+        }
+        scrollTo({
+            top: window.innerHeight * amount,
+            left: 0,
+            behavior: 'smooth'
+        });
+    }
 }
 
-// archive_HTML.style = 'height: ' + years.length * 125 + 'px';
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+window.addEventListener('wheel', handleScrollWheel);
+window.addEventListener('touchstart', function(event) {
+    start = event.touches[0].clientY;
+})
+window.addEventListener('touchmove', handleScrollMobile);
+window.addEventListener('touchend', function(event) {
+    console.log('hello');
+    scrolling = false;
+})
