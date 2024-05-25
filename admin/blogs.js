@@ -36,9 +36,9 @@ function goTime() {
     let yearSelected = year.options[year.selectedIndex].value;
 
     if (monthSelected == 'All') {
-        location.href = '/blog?year=' + yearSelected;
+        location.href = '/admin/blogs?year=' + yearSelected;
     } else {
-        location.href = '/blog?year=' + yearSelected + '&month=' + months_n[months.indexOf(monthSelected)];
+        location.href = '/admin/blogs?year=' + yearSelected + '&month=' + months_n[months.indexOf(monthSelected)];
     }
 }
 
@@ -147,11 +147,29 @@ function load() {
                                 fp.appendChild(bt);
                                 fpHolder.appendChild(fp);
                                 fb.appendChild(fpHolder);
-                                bt.addEventListener('click', function(e) {
-                                    let date = res[key][day_key][d]['date'].split('/');
-                                    location.href = "/blog?year=" + date[2] + '&month=' + date[0] + '&day=' + date[1] + '&id=' + d;
-                                    delete date;
+                                let date = res[key][day_key][d]['date'].split('/');
+                                bt.setAttribute('onclick', 'location.href = "/admin/blogs?year=' + date[2] + "&month=" + date[0] + "&day=" + date[1] + "&id=" + d + '"');
+                                // Tools
+                                
+                                let tools_container = document.createElement('div');
+                                tools_container.classList.add('tools_container');
+
+                                let del_btn = document.createElement('button');
+                                del_btn.innerHTML = '&#10005';
+                                del_btn.addEventListener('click', function() {
+                                    deleteBlog(this);
                                 });
+
+                                let edit_btn = document.createElement('button');
+                                edit_btn.innerHTML = 'EDIT';
+                                edit_btn.classList.add('edit');
+                                edit_btn.addEventListener('click', function() {
+                                    editBlog(this);
+                                });
+
+                                tools_container.appendChild(edit_btn);
+                                tools_container.appendChild(del_btn)
+                                fb.appendChild(tools_container);
                             }
                         }
                     } else {
@@ -182,11 +200,28 @@ function load() {
                             fp.appendChild(bt);
                             fpHolder.appendChild(fp);
                             fb.appendChild(fpHolder);
-                            bt.addEventListener('click', function(e) {
-                                let date = res[key][d]['date'].split('/');
-                                location.href = "/blog?year=" + date[2] + '&month=' + date[0] + '&day=' + date[1] + '&id=' + d;
-                                delete date;
+                            let date = res[key][d]['date'].split('/');
+                            bt.setAttribute('onclick', 'location.href = "/admin/blogs?year=' + date[2] + "&month=" + date[0] + "&day=" + date[1] + "&id=" + d + '"');
+                            // Tools    
+                            let tools_container = document.createElement('div');
+                            tools_container.classList.add('tools_container');
+
+                            let del_btn = document.createElement('button');
+                            del_btn.innerHTML = '&#10005';
+                            del_btn.addEventListener('click', function() {
+                                deleteBlog(this);
                             });
+
+                            let edit_btn = document.createElement('button');
+                            edit_btn.innerHTML = 'EDIT';
+                            edit_btn.classList.add('edit');
+                            edit_btn.addEventListener('click', function() {
+                                editBlog(this);
+                            });
+
+                            tools_container.appendChild(edit_btn);
+                            tools_container.appendChild(del_btn)
+                            fb.appendChild(tools_container);
                         }
                     }
                 }
@@ -194,6 +229,70 @@ function load() {
         })
     }
 }
+
+function deleteBlog(btn) {
+    let fb = document.querySelector('.featured-blogs');
+    let adds = fb.querySelectorAll('div.fp-holder, div.tools_container');
+
+    let last = null;
+
+    adds.forEach((add, index) => {
+        if (add.querySelectorAll('button')[1] == btn && last != null) {
+            console.log(last);
+            console.log(add);
+
+            let date = last.querySelector('h3').innerHTML.split('/');
+            console.log(date);
+            
+            let blog = {
+                'title': last.querySelector('h1').innerHTML,
+                'month': date[0],
+                'day': date[1],
+                'year': date[2],
+            }
+
+            fetch('/admin/delete-post', {
+                'method': 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(blog)
+            }).then(res => res.json())
+            .then(res => {
+                if (res['success']) {
+                    alert('Deleted!');
+                    location.reload();
+                } else {
+                    alert(res['error']);
+                }
+            }) 
+
+            // location.reload();
+            return;
+        }
+        last = add;
+    });
+}
+
+function editBlog(btn) {
+    let fb = document.querySelector('.featured-blogs');
+    let adds = fb.querySelectorAll('div.fp-holder, div.tools_container');
+
+    let last = null;
+
+    adds.forEach((add, index) => {
+        if (add.querySelector('button.edit') == btn && last != null) {
+            console.log(last);
+            let bt = last.querySelector('.blog_title');
+            let bt_fn = bt.onclick.toString();
+            let link = bt_fn.substring(bt_fn.indexOf('"')+1, bt_fn.length);
+            link = link.substring(link.indexOf('?'), link.indexOf('"'));
+            location.href = '/admin/blog-editor' + link;
+        }
+        last = add;
+    });
+}
+
 
 load();
 

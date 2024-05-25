@@ -18,13 +18,18 @@
                 <div class="left menu">
                     <a href="/home">HOME</a>
                     <a href="/blog">BLOG</a>
-                    <a href="/gallery">GALLERY</a>
+                    <a href="/galler">GALLERY</a>
                 </div>
                 <div class="right menu">
                     <a href="/our-story">OUR STORY</a>
                     <a href="/contact-us">CONTACT US</a>
                 </div>
             </div>
+        </div>
+        <div class="preview_container">
+            <div class="preview_tag">
+            </div>
+            <h1>ADMIN</h1>
         </div>
     </div>
 
@@ -59,8 +64,76 @@
         </div>
     </div>
 
+    <style>
+        .preview_container {
+            position: fixed;
+            right: 0;
+            top: 0;
+            z-index: 100;
+            width: 150px;
+            height: 150px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .preview_tag {
+            width: 0;
+            height: 0;
+            border-top: 0px solid transparent;
+            border-bottom: 150px solid transparent;
+            border-right: 150px solid rgba(0, 0, 0, .5);
+            top: 0;
+            right: 0;
+            position: absolute;
+        }
+        .preview_container h1{
+            color: rgb(250, 250, 250);
+            font-size: 1.5em;
+            padding: 0;
+            transform: rotate(45deg);
+            margin-left: 1.3em;
+            margin-bottom: 1.8em;
+        }
+
+        .tools_container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .tools_container button {
+            font-size: 1em;
+            height: 30px;
+            margin: 0 1em;
+            padding: 0 1em;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            color: white;
+            background-color: rgb(200, 100, 100);
+            border: 0;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            transition: .3s;
+        }
+
+        .tools_container button:hover {
+            background-color: rgb(255, 100, 100);
+        }
+
+        .tools_container .edit {
+            background-color: rgb(50, 50, 50, .5);
+        }
+
+        .tools_container .edit:hover {
+            background-color: rgb(100, 100, 100, .5);
+        }
+
+    </style>
+
     <script src="static/scripts/nav.js"></script>
-    <script src="static/scripts/blog.js"></script>
+    <script src="/admin/blogs.js"></script>
     
 </body>
 </html>

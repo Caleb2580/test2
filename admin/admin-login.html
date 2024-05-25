@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Portal</title>
+    <title>Admin Portal Login</title>
 </head>
 <body>
     <div class="container">
@@ -17,7 +17,7 @@
         function login() {
             let u = document.getElementById('username').value;
             let p = document.getElementById('password').value;
-            fetch('/admin', {
+            fetch('/admin-login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -28,7 +28,7 @@
                 })
             }).then(res => res.json()).then(data => {
                 if (data.success) {
-                    location.href = "/blog-editor";
+                    location.href = "/admin";
                 } else {
                     alert('Login Failed');
                 }

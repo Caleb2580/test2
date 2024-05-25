@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/styles/nav.css">
+    <link rel="stylesheet" href="static/styles/blog.css">
+    <script src="static/scripts/main.js"></script>
+    <title>Sailing Heartstring</title>
+</head>
+<body>
+    <div class="nav">
+        <div class="nav_page">
+            <div class="nav_main">
+                <h1 class="nav-title" onclick="window.location = '/'">Sailing Heartstring</h1>
+            </div>
+            <div class="menu_items">
+                <div class="left menu">
+                    <a href="/home">HOME</a>
+                    <a href="/blog">BLOG</a>
+                    <a href="/galler">GALLERY</a>
+                </div>
+                <div class="right menu">
+                    <a href="/our-story">OUR STORY</a>
+                    <a href="/contact-us">CONTACT US</a>
+                </div>
+            </div>
+        </div>
+        <div class="preview_container">
+            <div class="preview_tag">
+            </div>
+            <h1>ADMIN</h1>
+        </div>
+    </div>
+
+    <div class="main">
+        <div class="time_container">
+            <div class="time_div">
+                <select name="" id="month">
+                    <option value="All">All</option>
+                    <option value="January">January</option>
+                    <option value="February">February</option>
+                    <option value="March">March</option>
+                    <option value="April">April</option>
+                    <option value="May">May</option>
+                    <option value="June">June</option>
+                    <option value="July">July</option>
+                    <option value="August">August</option>
+                    <option value="September">September</option>
+                    <option value="October">October</option>
+                    <option value="November">November</option>
+                    <option value="December">December</option>
+                </select>
+                <select name="" id="year">
+                    <option value="2024">2024</option>
+                    <option value="2023">2023</option>
+                    <option value="2022">2022</option>
+                    <option value="2021">2021</option>
+                    <option value="2020">2020</option>
+                    <option value="2019">2019</option>
+                </select>
+                <button class="go-btn">Go!</button>
+            </div>
+        </div>
+        <div class="new_blog">
+            <div class="container">
+                <input id="title" type="text" placeholder="Title">
+            </div>
+            <div class="container">
+                <!-- <input id="date" type="text" placeholder="Date"> -->
+                <input type="text" id="new_month" placeholder="00">/<input type="text" id="new_day" placeholder="00">/<input type="text" id="new_year" placeholder="0000">
+            </div>
+            <div class="container">
+                <select name="" id="public_or_private">
+                    <option value="public">public</option>
+                    <option value="private">private</option>
+                </select>
+            </div>
+            <div class="container">
+                <input type="text" id="new_featured_image" placeholder="Featured Image">
+            </div>
+            <div class="container">
+                <div class="blog_container">
+                    
+                </div>
+            </div>
+
+            <!-- <img src="https://i.imgur.com/mfAcc8Q.jpg" alt=""> -->
+            
+            <div class="container">
+                <div class="content_adder">
+                    <div class="to_add" id="add_text" onclick="add_text()">
+                        <h1>+</h1>
+                        <h2>TEXT</h2>
+                    </div>
+                    <div class="to_add" id="add_image" onclick="add_image()">
+                        <h1>+</h1>
+                        <h2>IMAGE</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <button class="create_post" onclick="createPost()">Create Post</button>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .preview_container {
+            position: fixed;
+            right: 0;
+            top: 0;
+            z-index: 100;
+            width: 150px;
+            height: 150px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .preview_tag {
+            width: 0;
+            height: 0;
+            border-top: 0px solid transparent;
+            border-bottom: 150px solid transparent;
+            border-right: 150px solid rgba(0, 0, 0, .5);
+            top: 0;
+            right: 0;
+            position: absolute;
+        }
+        .preview_container h1{
+            color: rgb(250, 250, 250);
+            font-size: 1.5em;
+            padding: 0;
+            transform: rotate(45deg);
+            margin-left: 1.3em;
+            margin-bottom: 1.8em;
+        }
+
+        .main {
+            justify-content: center;
+        }
+
+        #public_or_private {
+            background-color: transparent;
+            outline: none;
+            border: 2px solid rgb(250, 250, 250);
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            padding: .5em;
+        }
+
+        #public_or_private option {
+            color: rgb(10, 10, 10);
+        }
+
+        .new_blog {
+            width: 100%;
+        }
+
+        .container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 1.5rem 0;
+            color: rgb(250, 250, 250);
+        }
+
+        .container h1{
+            margin: 0 .5rem 0 0;
+            font-size: 1.5em;
+            color: rgb(250, 250, 250);
+        }
+
+        .container input {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0 0 0 .5rem;
+            font-size: 1.5em;
+            padding: .5em;
+            outline: none;
+            border: 0;
+            background-color: transparent;
+            color: rgb(250, 250, 250);
+            border-bottom: 2px solid rgb(250, 250, 250);
+            width: 20em;
+            text-align: center;
+        }
+
+        .container #new_month, #new_year, #new_day {
+            width: 3em;
+            margin: 0 1em;
+        }
+
+        .container input::placeholder {
+            color: rgb(0, 0, 0, .3);
+        }
+        
+        .content_adder {
+            width: 90%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .to_add {
+            width: 250px;
+            height: 150px;
+            border: 5px solid rgb(250, 250, 250);
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            cursor: pointer;
+            margin: 1em;
+        }
+
+        .to_add:hover {
+            background-color: rgba(250, 250, 250, .2);
+        }
+
+        .to_add h1 {
+            height: 50px;
+            font-size: 3em;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        .to_add h2 {
+            height: 50px;   
+            font-size: 1.5em;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        .blog_container p {
+            width: 100%;
+            border: 3px solid rgba(250, 250, 250, .1);
+            transition: .3s;
+        }
+
+        .blog_container p:focus {
+            outline: none;
+            border: 3px solid rgb(250, 250, 250);
+        }
+
+        .blog_container h3 {
+            padding: 2em;
+            min-width: 200px;
+            background-color: rgba(0, 0, 0, .1);
+            border: 3px solid rgba(250, 250, 250, .1);
+            transition: .3s;
+            text-align: center;
+            display: flex;
+            align-items: center;
+        }
+
+        .blog_container h3:focus {
+            outline: none;
+            border: 3px solid rgb(250, 250, 250);
+        }
+
+        .create_post {
+            font-family: 'Montserrat', sans-serif;
+            background-color: transparent;
+            border: 3px solid rgb(250, 250, 250);
+            color: white;
+            padding: 1em;
+            border-radius: 15px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+
+        .create_post:hover {
+            background-color: rgba(250, 250, 250, .2);
+        }
+
+        .blog_container button {
+            font-size: 1em;
+            height: 30px;
+            width: 60px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            color: white;
+            background-color: rgb(200, 100, 100);
+            border: 0;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .blog_container button:hover {
+            background-color: rgb(255, 100, 100);
+        }
+
+    </style>
+
+    <script>
+        let startingTitle = '';
+
+        function add_text() {
+            let blog_container = document.querySelector('.blog_container');
+            let p = document.createElement('p');
+            // p.classList.add('deleteable');
+            p.setAttribute('contenteditable', true);
+            blog_container.appendChild(p);
+
+            let btn = document.createElement('button');
+            btn.innerHTML = '&#10005';
+            btn.addEventListener('click', function() {
+                deleteAdd(this);
+            });
+            blog_container.appendChild(btn);
+            return p;
+        }
+
+        function add_image() {
+            let blog_container = document.querySelector('.blog_container');
+
+            let h3 = document.createElement('h3');
+            // h3.classList.add('deleteable');
+            h3.setAttribute('contenteditable', true);
+            blog_container.appendChild(h3);
+
+            let btn = document.createElement('button');
+            btn.innerHTML = '&#10005';
+            btn.addEventListener('click', function() {
+                deleteAdd(this);
+            });
+            blog_container.appendChild(btn);
+            return h3;
+        }
+
+        function deleteAdd(btn) {
+            let blog_container = document.querySelector('.blog_container');
+            let adds = blog_container.querySelectorAll('p, h3, button');
+
+
+            let last = null;
+
+            adds.forEach((add, index) => {
+                if (add == btn && last != null) {
+                    last.remove();
+                    btn.remove();
+                    return;
+                }
+                last = add;
+            });
+        }
+
+        function createPost() {
+            let title = document.querySelector('input#title').value;
+            if (title.length == 0) {
+                alert('Please enter a title');
+                return;
+            }
+            let month = document.querySelector('input#new_month').value;
+            let day = document.querySelector('input#new_day').value;
+            let year = document.querySelector('input#new_year').value;
+            if (month.length == 0 || isNaN(month) || parseInt(month) < 1 || parseInt(month) > 12) {
+                alert('Please enter a valid month');
+                return;
+            } else if (day.length == 0 || isNaN(day) || parseInt(day) < 0) {
+                alert('Please enter a valid day');
+                return;
+            } else if (year.length == 0 || isNaN(year)) {
+                alert('Please enter a valid year');
+                return;
+            }
+
+            if (month.length == 1) {
+                month = '0' + month;
+            }
+            if (day.length == 1) {
+                day = '0' + day;
+            }
+            if (year.length < 2 || year.length == 3 || year.length > 4) {
+                alert('Please enter a valid year');
+                return;
+            } else if (year.length == 2) {
+                year = '20' + year;
+            }
+
+            if (document.querySelector('#new_featured_image').value.length == 0) {
+                alert('Please enter a valid featured image link');
+                return;
+            }
+
+            let blog_container = document.querySelector('.blog_container');
+            let elements = blog_container.querySelectorAll('p, h3');
+            if (elements.length == 0) {
+                alert('Please add something to your post');
+                return;
+            } else {
+                let content = '';
+                for(let i = 0; i < elements.length; i++) {
+                    if (elements[i].innerHTML != null) {
+                        if (elements[i].tagName == 'P') {
+                            content += '<p>' + elements[i].innerHTML + '</p>';
+                        } else {
+                            if (elements[i].querySelector('span') == null) {
+                                content += '<div class="blog_image"><img src="' + elements[i].innerHTML + '"></img></div>';
+                            } else {
+                                content += '<div class="blog_image"><img src="' + elements[i].querySelector('span').innerHTML + '"></img></div>';
+                            }
+                        }
+                    };
+                }
+                let date = month + '/' + day + '/' + year;
+                let p_o_p = document.querySelector('#public_or_private').options[document.querySelector('#public_or_private').selectedIndex].value;
+                p_o_p = p_o_p == 'public' ? true : false;
+                let prs = new URLSearchParams(window.location.search);
+                let update = prs.size == 4;
+                let body = {
+                    'title': title,
+                    'date': date,
+                    'public': p_o_p,
+                    'featured_image': document.querySelector('#new_featured_image').value,
+                    'content': content,
+                }
+                
+                let delete_old = false;
+
+                if (update) {
+                    try {
+                        if (prs.get('year') === year && prs.get('month') === month && prs.get('day') === day) {
+                            body['update'] = true;
+                            body['id'] = prs.get('id');
+                        } else {
+                            delete_old = true;
+                        }
+                    } catch (e) {
+                        alert('Something went wrong');
+                        return;
+                    }
+                }
+                fetch('/admin/create-post', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(body)
+                }).then(res => res.json())
+                .then(res => {
+                    if (res['success']) {
+                        if (delete_old) {
+                            fetch('/admin/delete-post', {
+                                'method': 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({
+                                    title: startingTitle,
+                                    month: prs.get('month'),
+                                    day: prs.get('day'),
+                                    year: prs.get('year')
+                                })
+                            }).then(res => res.json())
+                            .then(res => {
+                                if (res['success']) {
+                                    console.log('deleted');
+                                } else {
+                                    alert('Something went wrong');
+                                }
+                            }).catch(e => {
+                                alert('Something went wrong');
+                            }).then(() => {
+                                if (update) {
+                                    alert('Updated!');
+                                } else {
+                                    alert('Created!');
+                                }
+                                startingTitle = body['title'];
+                                location.href = "/admin/blogs?year=" + year + '&month=' + month + '&day=' + day;
+                            }).catch(() => {
+                                alert('Something went wrong');
+                            })
+                        } else {
+                            if (update) {
+                                alert('Updated!');
+                            } else {
+                                alert('Created');
+                            }
+                            location.href = "/admin/blogs?year=" + year + '&month=' + month + '&day=' + day;
+                        }
+                    } else {
+                        alert(res['error']);
+                    }
+                })
+            }
+        }
+
+        document.addEventListener('contextmenu', function(event) {
+            event.preventDefault(); // Prevent the default context menu
+            let target = event.target;
+            if (target.classList.contains('deleteable')) {
+                target.remove(); // Remove the element
+            }
+        });
+        
+        function load() {
+            let urlParams = new URLSearchParams(window.location.search);
+
+            if (urlParams.size != 4) {
+                return;
+            }
+
+            fetch('/api/get-blog?' + urlParams)
+            .then(res => res.json())
+            .then(res => {
+                if (Array.isArray(res)) { // Day
+                    if (res.length == 0) {
+                        return;
+                    } else if (res.length == 1) { // Display Blog
+                        res = res[0];
+                        let date = res['date'].split('/');
+                        // Set elements
+                        let nb = document.querySelector('.new_blog');
+
+                        // Title
+                        let titleE = document.querySelector('input#title');
+                        titleE.value = res['title'];
+                        startingTitle = res['title'];
+
+                        // Date
+                        let monthE = document.querySelector('input#new_month');
+                        let dayE = document.querySelector('input#new_day');
+                        let yearE = document.querySelector('input#new_year');
+                        monthE.value = date[0];
+                        dayE.value = date[1];
+                        yearE.value = date[2];
+                        // monthE.setAttribute('readonly', 'readonly');
+                        // dayE.setAttribute('readonly', 'readonly');
+                        // yearE.setAttribute('readonly', 'readonly');
+                        // monthE.style.cursor = 'default';
+                        // dayE.style.cursor = 'default';
+                        // yearE.style.cursor = 'default';
+
+                        // Public
+                        let publicE = document.querySelector('select#public_or_private');
+                        publicE.selectedIndex = res['public'] == true ? 0 : 1;
+
+                        // Featured Image
+                        let featured_imageE = document.querySelector('input#new_featured_image');
+                        featured_imageE.value = res['featured_image'];
+
+                        // Elements
+                        let tempElement = document.createElement('div');
+                        tempElement.style = 'display: none;';
+                        tempElement.innerHTML = res['content'];
+                        let elements = tempElement.querySelectorAll('p, div');
+                        
+                        elements.forEach(e => {
+                            if (e.tagName == 'P') {
+                                let a = add_text();
+                                a.innerHTML = e.innerHTML;
+                            } else if (e.tagName == 'DIV') {
+                                let a = add_image();
+                                a.innerHTML = e.querySelector('img').src;
+                            }
+                        })
+
+                        tempElement.remove();
+
+                        // Create post button
+                        let create_post = document.querySelector('.create_post');
+                        create_post.innerHTML = 'Update Post'
+
+                    } else {
+                        return;
+                    }
+                }
+            });
+        }
+
+        load();
+    </script>
+
+    <script src="static/scripts/nav.js"></script>
+    <!-- <script src="static/scripts/blog.js"></script> -->
+    
+</body>
+</html>

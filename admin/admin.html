@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Portal</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Admin Tools</h1>
+        <div class="tools-container">
+            <div class="tool" onclick="window.open('/admin/blog-editor', '_blank')">
+                <h1>Blog Editor</h1>
+            </div>
+            <div class="tool" onclick="window.open('/admin/blogs', '_blank')">
+                <h1>Blogs</h1>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        
+    </script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            width: 100%;
+            height: 100dvh;
+            background-color: rgb(25, 25, 25);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            /* overflow: hidden; */
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .container>h1 {
+            color: rgb(250, 250, 250);
+            margin-bottom: 2em;
+        }
+
+        .tools-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .tool {
+            width: 300px;
+            height: 200px;
+            background-color: rgb(75, 75, 75);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-direction: column;
+            border-radius: 25px;
+            /* box-shadow: 0 0 20px rgba(250, 250, 250, .5); */
+            transition: .3s;
+            margin: 1em;
+            cursor: pointer;
+        }
+
+        .tool:hover {
+            box-shadow: inset 0 0 40px rgba(250, 250, 250, 1);
+        }
+
+        .tool>h1 {
+            padding: 0;
+            margin: 0;
+            color: rgb(250, 250, 250);
+        }
+
+        @media screen and (max-width: 500px) {
+            .tool {
+                width: 200px;
+                height: 133.33px;
+            }
+            .tool>h1 {
+                font-size: 1.5em;
+            }
+        }
+
+    </style>
+</body>
+</html>
