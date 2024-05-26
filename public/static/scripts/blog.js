@@ -198,5 +198,63 @@ function load() {
 load();
 
 
+start = 0;
+
+
+function handleScrollWheel(amt) {
+    let div = document.querySelector('div.everything');
+
+    let dvh = document.querySelector('div.dvh_tracker');
+    let dvh_height = window.getComputedStyle(dvh).height;
+    dvh_height = parseFloat(dvh_height.substring(0, dvh_height.length-2));
+    
+    let dvh_width = window.getComputedStyle(dvh).width;
+    dvh_width = parseFloat(dvh_width.substring(0, dvh_width.length));
+
+    let margin = window.getComputedStyle(div).marginTop;
+    margin = parseFloat(margin.substring(0, margin.length-2));
+    let height = window.getComputedStyle(div).height;
+    height = parseFloat(height.substring(0, height.length-2)) - dvh_height;
+    let final_margin = margin - amt;
+    final_margin = Math.min(Math.max(final_margin, -height), 0);
+    div.style.marginTop = final_margin + "px";
+
+    // let img = document.querySelector('.bg_image');
+    // let img_margin = window.getComputedStyle(img).marginTop;
+    // img_margin = parseFloat(img_margin.substring(0, img_margin.length-2));
+    // let img_height = window.getComputedStyle(img).height;
+    // img_height = parseFloat(img_height.substring(0, img_height.length-2)) - dvh_height;
+
+    // console.log(Math.abs(final_margin /  height));
+    // // final_margin = margin + (img_height * Math.abs(event.deltaY / height));
+    // final_margin = -1 * (img_height - (Math.abs(final_margin / height) * img_height));
+
+    // img.style.marginTop = final_margin + "px";
+
+    let img = document.querySelector('.bg_image_container');
+    let img_width = window.getComputedStyle(img).width;
+    img_width = parseFloat(img_width.substring(0, img_width.length-2)) - dvh_width;
+
+    // final_margin = margin + (img_height * Math.abs(event.deltaY / height));
+    final_margin = (-1 * (Math.abs(final_margin / height) * img_width)) - (.05 * dvh_width);
+
+    img.style.marginLeft = final_margin + "px";
+
+}
+
+function handleScrollWheelComputer(event) {
+    handleScrollWheel(event.deltaY);
+}
+function handleScrollWheelMobile(event) {
+    console.log(event.touches[0].clientY - start);
+    handleScrollWheel(start - event.touches[0].clientY);
+    start = event.touches[0].clientY;
+}
+
+window.addEventListener('wheel', handleScrollWheelComputer);
+window.addEventListener('touchstart', function(event) {
+    start = event.touches[0].clientY;
+})
+window.addEventListener('touchmove', handleScrollWheelMobile);
 
 

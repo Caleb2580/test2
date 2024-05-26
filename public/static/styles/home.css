@@ -49,22 +49,47 @@ div.quote h1 {
 
 .main {
     width: 100%;
-    height: 100%;
+    height: calc(100% - 200px);
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
 
-.bg_image {
+.bg_holder {
     position: fixed;
     width: 100%;
-    height: 150%;
+    height: 100dvh;
     overflow: hidden;
     z-index: -1;
 }
 
-.bg_image img {
+.bg_image {
+    width: 100%;
     height: 100%;
+    position: absolute;
+    overflow: hidden;
+    transition: ease-out 1s;
+}
+
+.bg_image#bg_1 {
+    z-index: 3;
+}
+
+.bg_image#bg_2 {
+    z-index: 2;
+    /* margin-left: -100%; */
+}
+
+.bg_image#bg_3 {
+    z-index: 1;
+    /* margin-left: -200%; */
+}
+
+.bg_image img {
+    /* height: 150%; */
+    /* width: 100%; */
+    margin-left: auto;
+    margin-right: auto;
 }
 
 
@@ -166,6 +191,10 @@ div.quote h1 {
     color: rgb(250, 250, 250);
     padding: 0 1em;
     margin: 0;
+}
+
+.time_nav_spacer {
+    height: 70px;
 }
 
 .time_div {
@@ -271,16 +300,19 @@ div.quote h1 {
 }
 
 @media screen and (max-width: 1050px) {
+    .fp-holder {
+        font-size: .7em;
+    }
     .fp-holder, .fp {
-        width: 400px;
-        height: 266px;
+        width: 300px;
+        height: 200px;
     }
 
     .fp:hover {
         top: -10px;
         left: -10px;
-        height: 286px;
-        width: 420px;
+        height: 220px;
+        width: 320px;
     }
 }
 
@@ -292,9 +324,13 @@ div.quote h1 {
 
 
 @media screen and (max-width: 650px) {
-    .bg_image img {
+    /* .bg_image img {
         height: 100%;
         margin: 0 0 0 0%;
+    } */
+
+    .time_nav_spacer {
+        height: 25px;
     }
 
     .featured-blogs {
@@ -332,6 +368,10 @@ div.quote h1 {
         height: 40px;
         padding: 0 .3em;
         margin: 1rem 1em 1em 1em;
+    }
+
+    .main {
+        height: calc(100% - 220px);
     }
 }
 
