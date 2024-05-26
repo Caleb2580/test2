@@ -24,6 +24,7 @@
             <a href="/gallery">GALLERY</a>
             <a href="/our-story">OUR STORY</a>
             <a href="/contact-us">CONTACT US</a>
+            <a href="/admin">ADMIN PORTAL</a>
         </div>
         <button onclick="openMobileMenu()">&#9776</button>
     </div>
@@ -49,7 +50,7 @@
             <div class="preview_container">
                 <div class="preview_tag">
                 </div>
-                <h1>ADMIN</h1>
+                <a href="/admin">ADMIN</a>
             </div>
         </div>
 
@@ -149,13 +150,14 @@
             right: 0;
             position: absolute;
         }
-        .preview_container h1{
+        .preview_container a{
             color: rgb(250, 250, 250);
             font-size: 1.5em;
             padding: 0;
             transform: rotate(45deg);
             margin-left: 1.3em;
             margin-bottom: 1.8em;
+            text-decoration: none;
         }
 
         .main {
@@ -316,6 +318,25 @@
 
         .blog_container button:hover {
             background-color: rgb(255, 100, 100);
+        }
+
+        @media screen and (max-width: 650px) {
+            .preview_tag {
+                width: 0;
+                height: 0;
+                border-top: 0px solid transparent;
+                border-bottom: 110px solid transparent;
+                border-right: 110px solid rgba(0, 0, 0, .5);
+                top: 0;
+                right: 0;
+                position: absolute;
+            }
+
+            .preview_container a {
+                font-size: 1.1em;
+                margin-left: 3.5em;
+                margin-bottom: 3.8em;
+            }
         }
 
     </style>

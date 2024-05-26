@@ -64,10 +64,8 @@ last_scroll_time = 0;
 last_scroll_amt = 0;
 
 function handleScrollWheel(event) {
-    console.log(event.deltaY);
     if (!scrolling & (Date.now() > last_scroll_time + 500 || Math.abs(event.deltaY - last_scroll_amt) > 20)) {  //  GENIUS  Math.abs(event.deltaY - last_scroll_amt) > 10
         scrolling = true;
-        console.log('scroll');
         amount += event.deltaY > 0 ? 1 : -1;
         if (amount < min_scroll) {
             amount = min_scroll;
@@ -106,7 +104,6 @@ window.addEventListener('touchstart', function(event) {
 })
 window.addEventListener('touchmove', handleScrollMobile);
 window.addEventListener('touchend', function(event) {
-    console.log('hello');
     scrolling = false;
 })
 

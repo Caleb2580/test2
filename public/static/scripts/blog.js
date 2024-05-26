@@ -106,7 +106,7 @@ function load() {
                         fb.classList.add('featured-blogs');
                         document.querySelector('.main').appendChild(fb);
                     }
-                    console.log(res);  // Display All in that day
+                      // Display All in that day
                 }
             } else {  // Dictionary
                 let fb = document.querySelector('.featured-blogs');
@@ -219,6 +219,7 @@ function handleScrollWheel(amt) {
     final_margin = Math.min(Math.max(final_margin, -height), 0);
     div.style.marginTop = final_margin + "px";
 
+
     // let img = document.querySelector('.bg_image');
     // let img_margin = window.getComputedStyle(img).marginTop;
     // img_margin = parseFloat(img_margin.substring(0, img_margin.length-2));
@@ -246,7 +247,6 @@ function handleScrollWheelComputer(event) {
     handleScrollWheel(event.deltaY);
 }
 function handleScrollWheelMobile(event) {
-    console.log(event.touches[0].clientY - start);
     handleScrollWheel(start - event.touches[0].clientY);
     start = event.touches[0].clientY;
 }
