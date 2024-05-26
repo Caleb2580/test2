@@ -199,6 +199,7 @@ load();
 
 
 start = 0;
+let dif = 0
 
 
 function handleScrollWheel(amt) {
@@ -244,11 +245,37 @@ function handleScrollWheel(amt) {
 }
 
 function handleScrollWheelComputer(event) {
-    handleScrollWheel(event.deltaY);
+    handleScrollWheel(event.deltaY/2);
 }
+
 function handleScrollWheelMobile(event) {
     handleScrollWheel(start - event.touches[0].clientY);
+    dif = (start - event.touches[0].clientY)
     start = event.touches[0].clientY;
+}
+
+function decreaseMobile(amt, first=false) {
+    let a = 0;
+    if (first) {
+        a = dif * .9;
+    } else {
+        if (a > 10) {
+            a = amt * .9;
+        } else if (a > 7) {
+            a = amt * .95
+        } else {
+            a = amt * .98;
+        }
+    }
+    if (Math.abs(a) < 1) {
+        return;
+    }
+    console.log(a);
+    handleScrollWheel(a)
+    setTimeout(() => {
+        decreaseMobile(a);
+    }, 10);
+
 }
 
 window.addEventListener('wheel', handleScrollWheelComputer);
@@ -256,6 +283,8 @@ window.addEventListener('touchstart', function(event) {
     start = event.touches[0].clientY;
 })
 window.addEventListener('touchmove', handleScrollWheelMobile);
-
+window.addEventListener('touchend', function(event) {
+    decreaseMobile(event, first=true)
+});
 
 
