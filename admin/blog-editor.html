@@ -3,105 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="static/styles/nav.css">
+    <link rel="stylesheet" href="static/styles/nav_blog.css">
     <link rel="stylesheet" href="static/styles/blog.css">
     <script src="static/scripts/main.js"></script>
     <title>Sailing Heartstring</title>
 </head>
 <body>
-    <div class="nav">
-        <div class="nav_page">
-            <div class="nav_main">
-                <h1 class="nav-title" onclick="window.location = '/'">Sailing Heartstring</h1>
-            </div>
-            <div class="menu_items">
-                <div class="left menu">
-                    <a href="/home">HOME</a>
-                    <a href="/blog">BLOG</a>
-                    <a href="/galler">GALLERY</a>
-                </div>
-                <div class="right menu">
-                    <a href="/our-story">OUR STORY</a>
-                    <a href="/contact-us">CONTACT US</a>
-                </div>
-            </div>
+    <div class="dvh_tracker" style="position: absolute; height: 100dvh; width: 100dvw; display: none;"></div>
+    <div class="bg_image">
+        <div class="bg_image_container">
+            <img src="https://i.imgur.com/R2zOPuu.jpeg" alt="">
         </div>
-        <div class="preview_container">
-            <div class="preview_tag">
-            </div>
-            <h1>ADMIN</h1>
-        </div>
+        <div class="cover"></div>
     </div>
 
-    <div class="main">
-        <div class="time_container">
-            <div class="time_div">
-                <select name="" id="month">
-                    <option value="All">All</option>
-                    <option value="January">January</option>
-                    <option value="February">February</option>
-                    <option value="March">March</option>
-                    <option value="April">April</option>
-                    <option value="May">May</option>
-                    <option value="June">June</option>
-                    <option value="July">July</option>
-                    <option value="August">August</option>
-                    <option value="September">September</option>
-                    <option value="October">October</option>
-                    <option value="November">November</option>
-                    <option value="December">December</option>
-                </select>
-                <select name="" id="year">
-                    <option value="2024">2024</option>
-                    <option value="2023">2023</option>
-                    <option value="2022">2022</option>
-                    <option value="2021">2021</option>
-                    <option value="2020">2020</option>
-                    <option value="2019">2019</option>
-                </select>
-                <button class="go-btn">Go!</button>
+    <div class="mobile_menu">
+        <div class="mobile_menu_container">
+            <a href="/home">HOME</a>
+            <a href="/blog">BLOG</a>
+            <a href="/gallery">GALLERY</a>
+            <a href="/our-story">OUR STORY</a>
+            <a href="/contact-us">CONTACT US</a>
+        </div>
+        <button onclick="openMobileMenu()">&#9776</button>
+    </div>
+
+    <div class="everything">
+        <div class="nav">
+            <div class="nav_page">
+                <div class="nav_main">
+                    <h1 class="nav-title" onclick="window.location = '/'">Sailing Heartstring</h1>
+                </div>
+                <div class="menu_items">
+                    <div class="left menu">
+                        <a href="/home">HOME</a>
+                        <a href="/blog">BLOG</a>
+                        <a href="/galler">GALLERY</a>
+                    </div>
+                    <div class="right menu">
+                        <a href="/our-story">OUR STORY</a>
+                        <a href="/contact-us">CONTACT US</a>
+                    </div>
+                </div>
+            </div>
+            <div class="preview_container">
+                <div class="preview_tag">
+                </div>
+                <h1>ADMIN</h1>
             </div>
         </div>
-        <div class="new_blog">
-            <div class="container">
-                <input id="title" type="text" placeholder="Title">
-            </div>
-            <div class="container">
-                <!-- <input id="date" type="text" placeholder="Date"> -->
-                <input type="text" id="new_month" placeholder="00">/<input type="text" id="new_day" placeholder="00">/<input type="text" id="new_year" placeholder="0000">
-            </div>
-            <div class="container">
-                <select name="" id="public_or_private">
-                    <option value="public">public</option>
-                    <option value="private">private</option>
-                </select>
-            </div>
-            <div class="container">
-                <input type="text" id="new_featured_image" placeholder="Featured Image">
-            </div>
-            <div class="container">
-                <div class="blog_container">
-                    
+
+        <div class="main">
+            <div class="time_container">
+                <div class="time_div">
+                    <select name="" id="month">
+                        <option value="All">All</option>
+                        <option value="January">January</option>
+                        <option value="February">February</option>
+                        <option value="March">March</option>
+                        <option value="April">April</option>
+                        <option value="May">May</option>
+                        <option value="June">June</option>
+                        <option value="July">July</option>
+                        <option value="August">August</option>
+                        <option value="September">September</option>
+                        <option value="October">October</option>
+                        <option value="November">November</option>
+                        <option value="December">December</option>
+                    </select>
+                    <select name="" id="year">
+                        <option value="2024">2024</option>
+                        <option value="2023">2023</option>
+                        <option value="2022">2022</option>
+                        <option value="2021">2021</option>
+                        <option value="2020">2020</option>
+                        <option value="2019">2019</option>
+                    </select>
+                    <button class="go-btn">Go!</button>
                 </div>
             </div>
-
-            <!-- <img src="https://i.imgur.com/mfAcc8Q.jpg" alt=""> -->
-            
-            <div class="container">
-                <div class="content_adder">
-                    <div class="to_add" id="add_text" onclick="add_text()">
-                        <h1>+</h1>
-                        <h2>TEXT</h2>
-                    </div>
-                    <div class="to_add" id="add_image" onclick="add_image()">
-                        <h1>+</h1>
-                        <h2>IMAGE</h2>
+            <div class="new_blog">
+                <div class="container">
+                    <input id="title" type="text" placeholder="Title">
+                </div>
+                <div class="container">
+                    <!-- <input id="date" type="text" placeholder="Date"> -->
+                    <input type="text" id="new_month" placeholder="00">/<input type="text" id="new_day" placeholder="00">/<input type="text" id="new_year" placeholder="0000">
+                </div>
+                <div class="container">
+                    <select name="" id="public_or_private">
+                        <option value="public">public</option>
+                        <option value="private">private</option>
+                    </select>
+                </div>
+                <div class="container">
+                    <input type="text" id="new_featured_image" placeholder="Featured Image">
+                </div>
+                <div class="container">
+                    <div class="blog_container">
+                        
                     </div>
                 </div>
-            </div>
 
-            <div class="container">
-                <button class="create_post" onclick="createPost()">Create Post</button>
+                <!-- <img src="https://i.imgur.com/mfAcc8Q.jpg" alt=""> -->
+                
+                <div class="container">
+                    <div class="content_adder">
+                        <div class="to_add" id="add_text" onclick="add_text()">
+                            <h1>+</h1>
+                            <h2>TEXT</h2>
+                        </div>
+                        <div class="to_add" id="add_image" onclick="add_image()">
+                            <h1>+</h1>
+                            <h2>IMAGE</h2>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <button class="create_post" onclick="createPost()">Create Post</button>
+                </div>
             </div>
         </div>
     </div>
@@ -578,6 +599,66 @@
         }
 
         load();
+
+        start = 0;
+
+
+        function handleScrollWheel(amt) {
+            let div = document.querySelector('div.everything');
+
+            let dvh = document.querySelector('div.dvh_tracker');
+            let dvh_height = window.getComputedStyle(dvh).height;
+            dvh_height = parseFloat(dvh_height.substring(0, dvh_height.length-2));
+            
+            let dvh_width = window.getComputedStyle(dvh).width;
+            dvh_width = parseFloat(dvh_width.substring(0, dvh_width.length));
+
+            let margin = window.getComputedStyle(div).marginTop;
+            margin = parseFloat(margin.substring(0, margin.length-2));
+            let height = window.getComputedStyle(div).height;
+            height = parseFloat(height.substring(0, height.length-2)) - dvh_height;
+            let final_margin = margin - amt;
+            final_margin = Math.min(Math.max(final_margin, -height), 0);
+            div.style.marginTop = final_margin + "px";
+
+            // let img = document.querySelector('.bg_image');
+            // let img_margin = window.getComputedStyle(img).marginTop;
+            // img_margin = parseFloat(img_margin.substring(0, img_margin.length-2));
+            // let img_height = window.getComputedStyle(img).height;
+            // img_height = parseFloat(img_height.substring(0, img_height.length-2)) - dvh_height;
+
+            // console.log(Math.abs(final_margin /  height));
+            // // final_margin = margin + (img_height * Math.abs(event.deltaY / height));
+            // final_margin = -1 * (img_height - (Math.abs(final_margin / height) * img_height));
+
+            // img.style.marginTop = final_margin + "px";
+
+            let img = document.querySelector('.bg_image_container');
+            let img_width = window.getComputedStyle(img).width;
+            img_width = parseFloat(img_width.substring(0, img_width.length-2)) - dvh_width;
+
+            // final_margin = margin + (img_height * Math.abs(event.deltaY / height));
+            final_margin = (-1 * (Math.abs(final_margin / height) * img_width)) - (.05 * dvh_width);
+
+            img.style.marginLeft = final_margin + "px";
+
+        }
+
+        function handleScrollWheelComputer(event) {
+            handleScrollWheel(event.deltaY);
+        }
+        function handleScrollWheelMobile(event) {
+            console.log(event.touches[0].clientY - start);
+            handleScrollWheel(start - event.touches[0].clientY);
+            start = event.touches[0].clientY;
+        }
+
+        window.addEventListener('wheel', handleScrollWheelComputer);
+        window.addEventListener('touchstart', function(event) {
+            start = event.touches[0].clientY;
+        })
+        window.addEventListener('touchmove', handleScrollWheelMobile);
+
     </script>
 
     <script src="static/scripts/nav.js"></script>
