@@ -34,12 +34,21 @@ function goTime() {
 
     let monthSelected = month.options[month.selectedIndex].value;
     let yearSelected = year.options[year.selectedIndex].value;
+    let author = document.querySelector('input#author_search').value;
+
+    let redir = '';
 
     if (monthSelected == 'All') {
-        location.href = '/blog?year=' + yearSelected;
+        redir = '/blog?year=' + yearSelected;
     } else {
-        location.href = '/blog?year=' + yearSelected + '&month=' + months_n[months.indexOf(monthSelected)];
+        redir = '/blog?year=' + yearSelected + '&month=' + months_n[months.indexOf(monthSelected)];
     }
+
+    if (author.length > 0) {
+        redir += '&author=' + author;
+    }
+
+    location.href = redir;
 }
 
 function load() {
@@ -73,6 +82,22 @@ function load() {
             }
         }
 
+        let author = null;
+        if (urlParams.get('author') != null) {
+            let author_raw = urlParams.get('author');
+            author = "";
+            for (let i = 0; i < author_raw.length; i++) {
+                if (i == 0 || author_raw[i-1] === " ") {
+                    author += author_raw[i].toUpperCase();
+                } else {
+                    author += author_raw[i];
+                }
+            }
+            document.querySelector('input#author_search').value = author;
+        }
+
+        console.log(author);
+
         fetch('/api/get-blog?' + urlParams)
         .then(res => res.json())
         .then(res => {
@@ -80,6 +105,9 @@ function load() {
                 if (res.length == 0) {
                     return;
                 } else if (res.length == 1) { // Display Blog
+                    if (author != null && author !== res[0].author) {
+                        return;
+                    }
                     let blog_container = document.createElement('div');
                     blog_container.classList.add('blog_container');
                     let title = document.createElement('h1');
@@ -106,7 +134,7 @@ function load() {
                         fb.classList.add('featured-blogs');
                         document.querySelector('.main').appendChild(fb);
                     }
-                      // Display All in that day
+                    // Display All in that day
                 }
             } else {  // Dictionary
                 let fb = document.querySelector('.featured-blogs');
@@ -114,6 +142,29 @@ function load() {
                     fb = document.createElement('div');
                     fb.classList.add('featured-blogs');
                     document.querySelector('.main').appendChild(fb);
+                }
+                for (let key in res) {
+                    if (key_order[0] == "month") {
+                        for (let day_key in res[key]) {
+                            for (let d in res[key][day_key]) {
+                                if (author != null && author !== res[key][day_key][d].author) {
+                                    res[key][day_key].splice(d, 1);
+                                }
+                            }
+                            if (Object.keys(res[key][day_key]).length == 0) {
+                                delete res[key][day_key];
+                            }
+                        }
+                    } else {
+                        for (let d in res[key]) {
+                            if (author != null && author !== res[key][d].author) {
+                                res[key].splice(d, 1);
+                            }
+                        }
+                    }
+                    if (Object.keys(res[key]).length == 0) {
+                        delete res[key];
+                    }
                 }
                 for (let key in res) {
                     let monthHeader = document.createElement('h1');

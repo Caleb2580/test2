@@ -201,6 +201,15 @@ body {
     color: rgb(50, 50, 50);
 }
 
+#author_search {
+    border: 0;
+    background-color: transparent;
+    font-size: 1.1em;
+    color: rgb(50, 50, 50);
+    outline: none;
+    width: 10em;
+}
+
 .go-btn {
     font-family: 'Montserrat', sans-serif;
     font-size: 1em;

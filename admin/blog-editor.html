@@ -92,6 +92,10 @@
                     <input type="text" id="new_month" placeholder="00">/<input type="text" id="new_day" placeholder="00">/<input type="text" id="new_year" placeholder="0000">
                 </div>
                 <div class="container">
+                    <!-- <input id="date" type="text" placeholder="Date"> -->
+                    <input type="text" id="new_author" placeholder="Author">
+                </div>
+                <div class="container">
                     <select name="" id="public_or_private">
                         <option value="public">public</option>
                         <option value="private">private</option>
@@ -535,6 +539,11 @@
                 year = '20' + year;
             }
 
+            if (document.querySelector('#new_author').value.length == 0) {
+                alert('Please enter a valid author name');
+                return;
+            }
+
             if (document.querySelector('#new_featured_image').value.length == 0) {
                 alert('Please enter a valid featured image link');
                 return;
@@ -565,9 +574,19 @@
                 p_o_p = p_o_p == 'public' ? true : false;
                 let prs = new URLSearchParams(window.location.search);
                 let update = prs.size == 4;
+                let author_raw = document.querySelector('#new_author').value;
+                let author = "";
+                for (let i = 0; i < author_raw.length; i++) {
+                    if (i == 0 || author_raw[i-1] === " ") {
+                        author += author_raw[i].toUpperCase();
+                    } else {
+                        author += author_raw[i];
+                    }
+                }
                 let body = {
                     'title': title,
                     'date': date,
+                    'author': author,
                     'public': p_o_p,
                     'featured_image': document.querySelector('#new_featured_image').value,
                     'content': content,
@@ -689,6 +708,9 @@
                         // monthE.style.cursor = 'default';
                         // dayE.style.cursor = 'default';
                         // yearE.style.cursor = 'default';
+
+                        let authorE = document.querySelector('input#new_author');
+                        authorE.value = res['author'];
 
                         // Public
                         let publicE = document.querySelector('select#public_or_private');
