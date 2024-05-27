@@ -261,7 +261,6 @@
         }
 
         .blog_container p {
-            font-size: 25px;
             width: 100%;
             border: 3px solid rgba(250, 250, 250, .1);
             transition: .3s;
@@ -321,47 +320,6 @@
             background-color: rgb(255, 100, 100);
         }
 
-        .add_options_container {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .add_options_container h5 {
-            margin: 0;
-            padding: 0 1em;
-            font-size: 1em;
-            font-weight: 800;
-        }
-
-        .add_options_container input {
-            font-family: 'Montserrat', sans-serif;
-            margin: 0 0 0 .5rem;
-            font-size: 1.5em;
-            padding: .5em;
-            outline: none;
-            border: 0;
-            background-color: transparent;
-            color: rgb(250, 250, 250);
-            border-bottom: 2px solid rgb(250, 250, 250);
-            width: 1.5em;
-            text-align: center;
-        }
-
-        .add_options_container .align_select {
-            background-color: transparent;
-            border: 3px solid rgb(250, 250, 250);
-            border-radius: 15px;
-            color: white;
-            padding: .3em;
-            outline: none;
-        }
-
-        .add_options_container .align_select option {
-            color: rgb(10, 10, 10);
-        }
-
         @media screen and (max-width: 650px) {
             .preview_tag {
                 width: 0;
@@ -393,74 +351,12 @@
             p.setAttribute('contenteditable', true);
             blog_container.appendChild(p);
 
-            let add_options_container = document.createElement('div');
-            add_options_container.classList.add('add_options_container');
-
             let btn = document.createElement('button');
             btn.innerHTML = '&#10005';
             btn.addEventListener('click', function() {
-                deleteAdd(this.parentElement);
+                deleteAdd(this);
             });
-            add_options_container.appendChild(btn);
-
-            let h5 = document.createElement('h5');
-            h5.innerHTML = '|'
-            add_options_container.appendChild(h5);
-
-            let font_size = document.createElement('input');
-            font_size.classList.add('font_size');
-            font_size.value = '25';
-            font_size.addEventListener('keydown', function(event) {
-                if (event.key == 'Enter') {
-                    if (!isNaN(this.value)) {
-                        let p = this.parentElement.previousElementSibling;
-                        if (p) {
-                            p.style.fontSize = font_size.value + 'px';
-                        }
-                    }
-                }
-            })
-            let px = document.createElement('h6');
-            px.innerHTML = 'px';
-            add_options_container.appendChild(font_size);
-            add_options_container.appendChild(px);
-
-            h5 = document.createElement('h5');
-            h5.innerHTML = '|'
-            add_options_container.appendChild(h5);
-
-            let align_select = document.createElement('select');
-            align_select.classList.add('align_select')
-            let align_options = ['Left', 'Center', 'Right'];
-            align_options.forEach(op => {
-                let option = document.createElement('option');
-                option.value = op;
-                option.innerHTML = op;
-                align_select.appendChild(option);
-            })
-
-            align_select.selectedIndex = 1;
-
-            align_select.addEventListener('change', function(event) {
-                let p = this.parentElement.previousElementSibling;
-                if (p) {
-                    switch(this.value) {
-                        case "Left":
-                            p.style.textAlign = 'left';
-                            break;
-                        case "Right":
-                            p.style.textAlign = 'right';
-                            break;
-                        case "Center":
-                            p.style.textAlign = 'center';
-                            break;
-                    }
-                }
-            })
-
-            add_options_container.append(align_select);
-
-            blog_container.appendChild(add_options_container);
+            blog_container.appendChild(btn);
             return p;
         }
 
@@ -472,23 +368,19 @@
             h3.setAttribute('contenteditable', true);
             blog_container.appendChild(h3);
 
-            let add_options_container = document.createElement('div');
-            add_options_container.classList.add('add_options_container');
-
             let btn = document.createElement('button');
             btn.innerHTML = '&#10005';
             btn.addEventListener('click', function() {
-                deleteAdd(this.parentElement);
+                deleteAdd(this);
             });
-
-            add_options_container.appendChild(btn);
-            blog_container.appendChild(add_options_container);
+            blog_container.appendChild(btn);
             return h3;
         }
 
         function deleteAdd(btn) {
             let blog_container = document.querySelector('.blog_container');
-            let adds = blog_container.querySelectorAll('p, h3, div');
+            let adds = blog_container.querySelectorAll('p, h3, button');
+
 
             let last = null;
 
