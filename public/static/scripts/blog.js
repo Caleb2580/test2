@@ -115,9 +115,13 @@ function load() {
                     let date = document.createElement('h2');
                     date.innerHTML = res[0]['date'];
 
+                    let authorE = document.createElement('h2');
+                    authorE.innerHTML = 'Posted By: ' + res[0]['author'];
+
                     let main = document.querySelector('.main');
                     blog_container.appendChild(title);
                     blog_container.appendChild(date);
+                    blog_container.appendChild(authorE);
                     
                     blog_container.innerHTML += res[0]['content'];
 
