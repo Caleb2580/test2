@@ -80,6 +80,7 @@
                         <option value="2020">2020</option>
                         <option value="2019">2019</option>
                     </select>
+                    <input type="text" id="author_search" placeholder="Author">
                     <button class="go-btn">Go!</button>
                 </div>
             </div>
@@ -92,7 +93,6 @@
                     <input type="text" id="new_month" placeholder="00">/<input type="text" id="new_day" placeholder="00">/<input type="text" id="new_year" placeholder="0000">
                 </div>
                 <div class="container">
-                    <!-- <input id="date" type="text" placeholder="Date"> -->
                     <input type="text" id="new_author" placeholder="Author">
                 </div>
                 <div class="container">
@@ -390,11 +390,25 @@
     <script>
         let startingTitle = '';
 
-        function add_text() {
+        function add_text(stylingRaw, defaultStyling={
+            'font-size': '25',
+            'text-align': 'center'
+        }) {
+            stylingVals = stylingRaw.replaceAll(' ', '').split(";");
+            stylingOps = {};
+            for (let i in stylingVals) {
+                if (stylingVals[i].length <= 3) {
+                    continue;
+                }
+                let s = stylingVals[i].split(':');
+                stylingOps[s[0]] = s[1];
+            }
+
             let blog_container = document.querySelector('.blog_container');
             let p = document.createElement('p');
             // p.classList.add('deleteable');
             p.setAttribute('contenteditable', true);
+            p.setAttribute('style', stylingRaw);
             blog_container.appendChild(p);
 
             let add_options_container = document.createElement('div');
@@ -413,13 +427,17 @@
 
             let font_size = document.createElement('input');
             font_size.classList.add('font_size');
-            font_size.value = '25';
+            if ('font-size' in stylingOps) {
+                font_size.value = stylingOps['font-size'].substring(0, stylingOps['font-size'].length - 2);
+            } else {
+                font_size.value = defaultStyling['font-size'];
+            }
             font_size.addEventListener('keydown', function(event) {
                 if (event.key == 'Enter') {
                     if (!isNaN(this.value)) {
                         let p = this.parentElement.previousElementSibling;
                         if (p) {
-                            p.style.fontSize = font_size.value + 'px';
+                            p.style.fontSize = this.value + 'px';
                         }
                     }
                 }
@@ -442,8 +460,20 @@
                 option.innerHTML = op;
                 align_select.appendChild(option);
             })
-
-            align_select.selectedIndex = 1;
+            
+            if ("text-align" in stylingOps) {
+                switch(stylingOps['text-align']) {
+                    case 'left':
+                        align_select.selectedIndex = 0;
+                        break;
+                    case 'center':
+                        align_select.selectedIndex = 1;
+                        break;
+                    case 'right':
+                        align_select.selectedIndex = 2;
+                        break;
+                }
+            } else {align_select.selectedIndex = 1;}
 
             align_select.addEventListener('change', function(event) {
                 let p = this.parentElement.previousElementSibling;
@@ -559,7 +589,18 @@
                 for(let i = 0; i < elements.length; i++) {
                     if (elements[i].innerHTML != null) {
                         if (elements[i].tagName == 'P') {
-                            content += '<p>' + elements[i].innerHTML + '</p>';
+                            let eStyle = window.getComputedStyle(elements[i]);
+                            console.log(eStyle.fontSize);
+                            let styling = [
+                                'font-size: ' + eStyle.fontSize,
+                                'text-align: ' + eStyle.textAlign,
+                            ]
+                            content += '<p style="';
+                            for (let i in styling) {
+                                content += styling[i] + '; ';
+                            }
+                            content += '" >' + elements[i].innerHTML + '</p>';
+                            console.log(content);
                         } else {
                             if (elements[i].querySelector('span') == null) {
                                 content += '<div class="blog_image"><img src="' + elements[i].innerHTML + '"></img></div>';
@@ -591,6 +632,7 @@
                     'featured_image': document.querySelector('#new_featured_image').value,
                     'content': content,
                 }
+                console.log(body);
                 
                 let delete_old = false;
 
@@ -659,6 +701,9 @@
                     } else {
                         alert(res['error']);
                     }
+                }).catch(e => {
+                    console.log('Error');
+                    console.log(e);
                 })
             }
         }
@@ -728,11 +773,13 @@
                         
                         elements.forEach(e => {
                             if (e.tagName == 'P') {
-                                let a = add_text();
+                                let a = add_text(e.getAttribute('style'));
                                 a.innerHTML = e.innerHTML;
+                                // a.setAttribute('style', e.getAttribute('style'));
                             } else if (e.tagName == 'DIV') {
                                 let a = add_image();
                                 a.innerHTML = e.querySelector('img').src;
+                                // a.setAttribute('style', e.getAttribute('style'));
                             }
                         })
 

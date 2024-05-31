@@ -53,19 +53,19 @@ app.get('/blog', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'blog.html'))
 });
 
-app.get('/admin/blog-editor', authenticate, (req, res) => {
+app.get('/admin/blog-editor', (req, res) => {
     res.sendFile(path.join(__dirname, 'admin', 'blog-editor.html'))
 })
 
-app.get('/admin/blogs', authenticate, (req, res) => {
+app.get('/admin/blogs', (req, res) => {
     res.sendFile(path.join(__dirname, 'admin', 'blogs.html'));
 })
 
-app.get('/admin/blogs.js', authenticate, (req, res) => {
+app.get('/admin/blogs.js', (req, res) => {
     res.sendFile(path.join(__dirname, 'admin', 'blogs.js'));
 })
 
-app.get('/admin', authenticate, (req, res) => {
+app.get('/admin', (req, res) => {
     res.sendFile(path.join(__dirname, 'admin', 'admin.html'))
 })
 
@@ -85,7 +85,7 @@ app.post('/admin-login', (req, res) => {
     res.send({success: false});
 })
 
-app.post('/admin/create-post', authenticate, (req, res) => {
+app.post('/admin/create-post', (req, res) => {
     let update = false;
     if (req.body.hasOwnProperty('update')) {
         update = req.body['update'];
@@ -100,7 +100,7 @@ app.post('/admin/create-post', authenticate, (req, res) => {
     })
 })
 
-app.post('/admin/delete-post', authenticate, (req, res) => {
+app.post('/admin/delete-post', (req, res) => {
     console.log(req.body);
     deleteBlog(req.body).then(r => {
         updatePublicDB();

@@ -20,7 +20,7 @@ body {
     justify-content: space-around;
     align-items: center;
     flex-direction: column;
-    /* padding: 2em 0; */
+    padding: 2em 0;
 }
 
 /* .bg_image {
@@ -166,12 +166,11 @@ body {
     align-items: center;
     flex-direction: column;
     padding: 2em;
-    margin: 2em 0 0 0;
+    margin: 2em 0;
     /* background-color: rgba(0, 0, 0, .8); */
     /* box-shadow: inset 0 0 10px rgba(255, 255, 255, .5); */
     box-shadow: inset 0 0 110px rgba(250, 250, 250, 1);
     border-radius: 10px;
-    width: 50%;
 }
 
 .time_container h1 {
@@ -183,7 +182,6 @@ body {
 
 .time_div {
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
 }
@@ -193,7 +191,7 @@ body {
     width: 150px;
     height: 40px;
     padding: 0 0em;
-    margin: 0 .5rem .5rem .5rem;
+    margin: 0rem 1rem 0 1rem;
     border-radius: 5px;
     background-color: transparent;
     border: 0;
@@ -209,11 +207,7 @@ body {
     font-size: 1.1em;
     color: rgb(50, 50, 50);
     outline: none;
-    width: 200px;
-    height: 40px;
-    margin: 0 0 .5rem 0;
-    text-align: center;
-    border-bottom: 3px solid rgb(50, 50, 50);
+    width: 10em;
 }
 
 .go-btn {
@@ -224,12 +218,10 @@ body {
     color: rgb(50, 50, 50);
     border: 3px solid rgb(50, 50, 50);
     padding: .5em 1em;
-    margin: 1rem 1rem 0 1rem;
+    margin: 0 1rem;
     cursor: pointer;
     border-radius: 5px;
     box-shadow: inset 0 0 20px rgba(0, 0, 0, .2);
-    margin-left: 30%;
-    margin-right: 30%;
 }
 
 .go-btn:hover {
@@ -243,20 +235,13 @@ body {
     flex-direction: column;
     width: 80%;
     font-size: 1em;
-    padding: 2em 0;
-    gap: 1em;
-    /* background-color: rgba(250, 250, 250, 1); */
-    /* border-radius: 15px; */
 }
 
 .blog_container h1, h2, p {
     font-weight: 100;
     color: rgb(250, 250, 250);
-    /* margin: 1rem 0; */
-    margin: 0;
+    margin: 1rem 0;
     padding: 0;
-    width: 100%;
-    text-align: center;
 }
 
 .blog_container h1 {
@@ -285,7 +270,7 @@ body {
 }
 
 .blog_image img {
-    width: 100%;
+    width: 80%;
 }
 
 
@@ -355,7 +340,7 @@ body {
         margin-left: 0;
     }
 
-    /* .time_container {
+    .time_container {
         margin: 0;
         padding: 2em 1em;
     }
@@ -364,10 +349,10 @@ body {
         width: 90px;
         font-size: .8em;
         margin: 0 .5em 0 .5em;
-    } */
+    }
 
-    /* .go-btn {
+    .go-btn {
         margin: 0 .5rem 0 .5rem;
-    } */
+    }
 }
 
