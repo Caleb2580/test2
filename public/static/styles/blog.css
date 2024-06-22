@@ -1,5 +1,6 @@
-body {
+body, html {
     width: 100%;
+    height: 100%;
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     margin: 0;
@@ -9,7 +10,7 @@ body {
                               rgb(200, 200, 255) 0%,
                               rgb(100, 175, 150) 40%,
                               rgb(0, 0, 200) 150%); */
-    overflow: hidden;
+    overflow: auto;
 }
 
 .main {
@@ -41,6 +42,7 @@ body {
     top: 0;
     left: 0;
     width: 100%;
+    height: 100%;
     background-color: rgb(150, 150, 255);
     z-index: -5;
     /* margin: 0 0 0 0; */
@@ -48,9 +50,17 @@ body {
     overflow: hidden;
 }
 
-.bg_image_container {
+/* .bg_image_container {
     width: 110%;
     margin-left: -5%;
+} */
+
+.bg_image_container {
+    background-image: url('sunset.png');
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100%;
 }
 
 .bg_image img {
@@ -62,7 +72,7 @@ body {
 .bg_image .cover {
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, .4);
+    background-color: rgba(0, 0, 0, .3);
     position: absolute;
     top: 0;
     left: 0;

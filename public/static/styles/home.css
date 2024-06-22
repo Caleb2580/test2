@@ -5,8 +5,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 html, body {
-    overflow-x: hidden;
-    overflow-y: hidden;
+    /* overflow: hidden; */
+    /* overflow: auto; */
+    width: 100%;
+    height: 100%;
 }
 
 body {
@@ -16,11 +18,10 @@ body {
     padding: 0;
     width: 100%;
     height: 100%;
-    overflow-x: hidden;
 }
 
 div.quote {
-    height: calc(85dvh - 160px - 3em);
+    height: calc(85% - 160px - 3em);
     width: 50%;
     margin-left: 40%;
     display: flex;
@@ -39,17 +40,17 @@ div.quote h1 {
 
 .page {
     width: 100%;
-    height: 100dvh;
+    height: 100%;
 }
 
 .spacer {
     width: 100%;
-    height: calc(100dvh - (160px));
+    height: calc(100% - (160px));
 }
 
 .main {
     width: 100%;
-    height: calc(100% - 200px);
+    /* height: calc(100% - 160px); */
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -58,9 +59,12 @@ div.quote h1 {
 .bg_holder {
     position: fixed;
     width: 100%;
-    height: 100dvh;
+    height: 100%;
     overflow: hidden;
     z-index: -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .bg_image {
@@ -71,18 +75,41 @@ div.quote h1 {
     transition: ease-out 1s;
 }
 
-.bg_image#bg_1 {
+/* .bg_image#bg_1 {
     z-index: 3;
+    background-image: url('../home.png');
+    background-position: 50% 100%;
+    background-size: cover;
 }
 
 .bg_image#bg_2 {
     z-index: 2;
-    /* margin-left: -100%; */
+    margin-left: -100%;
+    background-image: url('boats.png');
+    background-position: 50% 100%;
+    background-size: cover;
+} */
+
+/* .bg_image#bg_3 {
+    z-index: 1;
+    background-image: url('alyssa.png');
+    background-position: center;
+    background-size: cover;
+} */
+
+.bg_holder video {
+    z-index: 1;
+    position: relative;
+    width: 110%;
 }
 
-.bg_image#bg_3 {
-    z-index: 1;
-    /* margin-left: -200%; */
+.bg_filter {
+    z-index: 5;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, .3);
 }
 
 .bg_image img {
@@ -141,6 +168,8 @@ div.quote h1 {
     margin: 0;
     transition: ease-out .3s;
     cursor: pointer;
+    background-position: center;
+    background-size: cover;
 }
 
 .fp:hover {
@@ -258,7 +287,6 @@ div.quote h1 {
     background-color: rgba(255, 255, 255, .1);
 }
 
-
 @media screen and (max-width: 1550px) {
     .fp-holder, .fp {
         width: 500px;
@@ -270,6 +298,15 @@ div.quote h1 {
         left: -10px;
         height: 353.3px;
         width: 520px;
+    }
+}
+
+@media screen and (max-width: 1450px) {
+    .bg_holder video {
+        z-index: 1;
+        position: relative;
+        height: 100%;
+        width: auto;
     }
 }
 
@@ -290,7 +327,7 @@ div.quote h1 {
 
 @media screen and (max-width: 1180px) {
     div.quote {
-        height: calc(90dvh - 160px - 3em);
+        height: calc(90% - 160px - 3em);
         width: 50%;
         margin: 0 auto;
         display: flex;
@@ -371,29 +408,9 @@ div.quote h1 {
     }
 
     .main {
-        height: calc(100% - 220px);
+        height: calc(100% - 160px);
     }
 }
-
-/* @media screen and (max-width: 475px) {
-    .bg_image img {
-        height: 100%;
-        margin: 0 0 0 0%;
-    }
-
-    .fp-holder, .fp {
-        width: 325px;
-        height: 216.6px;
-        font-size: .8em;
-    }
-
-    .fp:hover {
-        top: -10px;
-        left: -10px;
-        height: 236.6px;
-        width: 345px;
-    }
-} */
 
 
 

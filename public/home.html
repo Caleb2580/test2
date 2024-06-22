@@ -3,17 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="static/styles/nav_home.css">
+    <link rel="stylesheet" href="static/styles/nav_blog.css">
     <link rel="stylesheet" href="static/styles/home.css">
     <script src="static/scripts/main.js"></script>
     <script src="static/scripts/nav.js"></script>
     <title>Sailing Heartstring</title>
+    <!-- <link rel="preload" href="/blog_posts/Sailing to Maryland/1.jpg" as="image"> -->
 </head>
 <body>
     <div class="bg_holder">
-        <div class="bg_image" id="bg_1"><img src="https://i.imgur.com/mfAcc8Q.jpg" style="height: 150%; width: auto;" alt=""></div>
-        <div class="bg_image" id="bg_2"><img src="https://i.imgur.com/KYVGuvp.jpeg" style="min-height: 1080px; min-width: 1920px;" alt=""></div>
-        <div class="bg_image" id="bg_3"><img src="https://i.imgur.com/vR7cdXW.jpeg" style="min-height: 1080px; min-width: 1920px;" alt=""></div>
+        <!-- <div class="bg_image" id="bg_1"></div>
+        <div class="bg_image" id="bg_2"></div>
+        <div class="bg_image" id="bg_3"></div> -->
+        <video autoplay muted loop>
+            <source src="rainbow.mp4" type="video/mp4">
+        </video>
+        <div class="bg_filter"></div>
+        <!-- <div class="bg_image" id="bg_2"><img src="boats.png" style="min-height: 1080px; min-width: 1920px;" alt=""></div>
+        <div class="bg_image" id="bg_3"><img src="alyssa.png" style="min-height: 1080px; min-width: 1920px;" alt=""></div> -->
     </div>
     <div class="mobile_menu">
         <div class="mobile_menu_container">
@@ -42,77 +49,71 @@
                 </div>
             </div>
         </div>
-        <div style="height: 160px;"></div>
+        <!-- <div style="height: 160px;"></div> -->
         <div class="quote">
-            <h1>"The goal is to die with memories, not dreams"</h1>
+            <h1>"'Tis the set of the soul, that determines the goal, and not the calm or the strife."<br><span style="font-size: .7em; font-weight: 600;">- Wilcox</span></h1>
         </div>
     </div>
-    <div class="page">
-        <div style="height: 160px;"></div>
-        <div class="main">
-            <div class="featured-blogs">
-                <div class="fp-holder">
-                    <div class="fp">
-                        <img src="/blog_posts/Sailing to Maryland/1.jpg" alt="">
-                        <div class="blog_title"><h1>Sailing to Maryland</h1><h3>May 5th, 2024</h3></div>
-                    </div>
-                </div>
-                <div class="fp-holder">
-                    <div class="fp">
-                        <img src="/blog_posts/Ashore Repairs/1.jpg" alt="">
-                        <div class="blog_title"><h1>Ashore Repairs</h1><h3>April 28th, 2024</h3></div>
-                    </div>
+    
+    <div class="main">
+        <div class="featured-blogs">
+            <div class="fp-holder">
+                <div class="fp" id="fp_1" style="background-image: url('/blog_posts/Sailing to Maryland/1.jpg');">
+                    <!-- <img src="/blog_posts/Sailing to Maryland/1.jpg"> -->
+                    <div class="blog_title"><h1>Sailing to Maryland</h1><h3>May 5th, 2024</h3></div>
                 </div>
             </div>
-            <!-- <div class="bottom"></div> -->
-        </div>
-    </div>
-
-    <div class="page">
-        <div class="time_nav_spacer"></div>
-        <div class="container">
-            <div class="time_container">
-                <h1>Time Travel?</h1>
-                <div class="time_div">
-                    <select name="" id="month">
-                        <option value="All">All</option>
-                        <option value="January">January</option>
-                        <option value="February">February</option>
-                        <option value="March">March</option>
-                        <option value="April">April</option>
-                        <option value="May">May</option>
-                        <option value="June">June</option>
-                        <option value="July">July</option>
-                        <option value="August">August</option>
-                        <option value="September">September</option>
-                        <option value="October">October</option>
-                        <option value="November">November</option>
-                        <option value="December">December</option>
-                    </select>
-                    <select name="" id="year">
-                        <option value="2024">2024</option>
-                        <option value="2023">2023</option>
-                        <option value="2022">2022</option>
-                        <option value="2021">2021</option>
-                        <option value="2020">2020</option>
-                        <option value="2019">2019</option>
-                    </select>
+            <div class="fp-holder">
+                <div class="fp" id="fp_2" style="background-image: url('/blog_posts/Ashore Repairs/1.jpg');">
+                    <!-- <img src="/blog_posts/Ashore Repairs/1.jpg"> -->
+                    <div class="blog_title"><h1>Ashore Repairs</h1><h3>April 28th, 2024</h3></div>
                 </div>
-                <button class="go-btn" onclick="goTime()">Go!</button>
             </div>
         </div>
+        <!-- <div class="bottom"></div> -->
     </div>
 
-
-    <script>
-        // scrollTo({
-        //     top: window.innerHeight * .8,
-        //     left: 0,
-        //     behavior: 'smooth'
-        // })
-    </script>
+    <div class="container">
+        <div class="time_container">
+            <h1>Time Travel?</h1>
+            <div class="time_div">
+                <select name="" id="month">
+                    <option value="All">All</option>
+                    <option value="January">January</option>
+                    <option value="February">February</option>
+                    <option value="March">March</option>
+                    <option value="April">April</option>
+                    <option value="May">May</option>
+                    <option value="June">June</option>
+                    <option value="July">July</option>
+                    <option value="August">August</option>
+                    <option value="September">September</option>
+                    <option value="October">October</option>
+                    <option value="November">November</option>
+                    <option value="December">December</option>
+                </select>
+                <select name="" id="year">
+                    <option value="2024">2024</option>
+                    <option value="2023">2023</option>
+                    <option value="2022">2022</option>
+                    <option value="2021">2021</option>
+                    <option value="2020">2020</option>
+                    <option value="2019">2019</option>
+                </select>
+            </div>
+            <button class="go-btn" onclick="goTime()">Go!</button>
+        </div>
+    </div>
 
     <script src="static/scripts/home.js"></script>
+
+    <!-- <script>
+        scrollTo({
+            top: 100,
+            left: 0,
+            behavior: 'smooth'
+        })
+    </script> -->
     
 </body>
 </html>
