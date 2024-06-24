@@ -56,7 +56,7 @@ body, html {
 } */
 
 .bg_image_container {
-    background-image: url('sunset.png');
+    background-image: url('/sunset.png');
     background-size: cover;
     background-position: center;
     width: 100%;
