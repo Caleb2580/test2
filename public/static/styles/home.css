@@ -101,8 +101,9 @@ div.quote h1 {
 
 .bg_holder video {
     z-index: 1;
-    position: relative;
+    position: absolute;
     width: 110%;
+    object-fit: cover;
 }
 
 .bg_filter {
@@ -305,7 +306,7 @@ div.quote h1 {
 
 @media screen and (max-width: 1450px) {
     .bg_holder video {
-        height: 100lvh;
+        height: 100%;
         width: auto;
     }
 }
