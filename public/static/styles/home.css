@@ -101,7 +101,9 @@ div.quote h1 {
 
 .bg_holder video {
     z-index: 1;
-    position: absolute;
+    position: fixed;
+    top: 0;
+    left: 0;
     /* width: 110%; */
     width: 100vw;
     height: 100vh;
@@ -306,14 +308,14 @@ div.quote h1 {
     }
 }
 
-@media screen and (max-width: 1450px) {
+/* @media screen and (max-width: 1450px) {
     .bg_holder video {
         /* height: 100%;
         width: auto; */
         width: 100vw;
         height: 100vh;
     }
-}
+} */
 
 
 @media screen and (max-width: 1275px) {
