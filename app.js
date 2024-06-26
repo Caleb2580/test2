@@ -57,6 +57,10 @@ app.get('/our-story', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'our-story.html'))
 })
 
+app.get('/coming-soon', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'coming-soon.html'))
+})
+
 app.get('/admin/blog-editor', authenticate, (req, res) => {
     res.sendFile(path.join(__dirname, 'admin', 'blog-editor.html'))
 })
